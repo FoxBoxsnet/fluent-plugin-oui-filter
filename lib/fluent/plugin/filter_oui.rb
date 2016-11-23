@@ -28,12 +28,13 @@ module Fluent::Plugin
     end
 
     def getprotocolname(mac)
-      mac.gsub!(/[0-9a-fA-F:]{1,8}$/, '')
-      mac.gsub!(/:/, '')
+      a = mac.gsub!(/[0-9a-fA-F:]{1,8}$/, '')
+      b = mac.gsub!(/:/, '')
+      c = b.upcase
 
       CSV.open(@database_path,"r") do |csv|
         csv.each do |row|
-          if row[0] == mac.upcase
+          if row[0] == c
             return row[1]
           end
         end
