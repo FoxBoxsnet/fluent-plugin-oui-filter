@@ -20,9 +20,9 @@ module Fluent::Plugin
       tag = tag.sub(@remove_prefix, '') if @remove_prefix
       tag = (@add_prefix + '.' + tag) if @add_prefix
 
-      es.each do |time.now, record|
+      es.each do |record|
         record[@key_prefix] = getprotocolname(record[@mac_address])
-        new_es.add(time.now, record)
+        new_es.add(record)
       end
       return new_es
     end
