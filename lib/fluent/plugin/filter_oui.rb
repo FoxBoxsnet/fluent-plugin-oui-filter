@@ -1,7 +1,7 @@
 require "csv"
 
 module Fluent
-  class ouiFilter < Filter
+  class OuiFilter < Filter
     Plugin.register_filter('oui', self)
 
     config_param :database_path, :string, :default => File.dirname(__FILE__) + '/../../../ouilist/ouilist.csv'
