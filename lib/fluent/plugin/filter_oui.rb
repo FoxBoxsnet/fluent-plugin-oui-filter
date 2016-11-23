@@ -12,8 +12,8 @@ module Fluent::Plugin
 
     def configure(conf)
       super
-      @remove_prefix = Regexp.new("^#{Regexp.escape(remove_prefix)}\.?") unless conf['remove_prefix'].nil?
-      @key_prefix    = @mac_address + "_" + @key_prefix
+        @remove_prefix = Regexp.new("^#{Regexp.escape(remove_prefix)}\.?") unless conf['remove_prefix'].nil?
+        @key_prefix    = @mac_address + "_" + @key_prefix
     end
 
     def filter_stream(tag, es)
@@ -21,11 +21,11 @@ module Fluent::Plugin
       tag = tag.sub(@remove_prefix, '') if @remove_prefix
       tag = (@add_prefix + '.' + tag) if @add_prefix
 
-      es.each do |time, record|
-        record[@key_prefix] = getprotocolname(record[@mac_address])
-        new_es.add(time, record)
-      end
-      return new_es
+        es.each do |time, record|
+          record[@key_prefix] = getprotocolname(record[@mac_address])
+          new_es.add(time, record)
+        end
+        return new_es
     end
 
     def getprotocolname(mac)
