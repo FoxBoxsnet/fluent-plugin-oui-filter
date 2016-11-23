@@ -1,7 +1,7 @@
 require 'csv'
 
 module Fluent::Plugin
-  class OuiFilter < Fluent::Plugin::Filter
+  class OuiFilter < Filter
     Fluent::Plugin.register_filter('oui', self)
 
     config_param :database_path, :string, :default => File.dirname(__FILE__) + '/../../../ouilist/ouilist.csv'
@@ -16,7 +16,7 @@ module Fluent::Plugin
         @key_prefix    = @mac_address + "_" + @key_prefix
     end
 
-    def filter_stream(tag, es)
+    def filter(tag, es)
       new_es = MultiEventStream.new
       tag = tag.sub(@remove_prefix, '') if @remove_prefix
       tag = (@add_prefix + '.' + tag) if @add_prefix
