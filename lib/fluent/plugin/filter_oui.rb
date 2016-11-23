@@ -20,8 +20,6 @@ class Fluent::OuiFilter < Fluent::Filter
     tag = tag.sub(@remove_prefix, '') if @remove_prefix
     tag = (@add_prefix + '.' + tag) if @add_prefix
 
-
-
     es.each do |time,record|
       record[@key_prefix] = getprotocolname(record[@mac_address])
       new_es.add(time, record)
@@ -29,15 +27,13 @@ class Fluent::OuiFilter < Fluent::Filter
     return new_es
   end
 
-  def getprotocolname(mac_address)
-    mac = mac_address
+  def getprotocolname(mac)
     mac.gsub!(/[0-9a-fA-F:]{1,8}$/, '')
     mac.gsub!(/:/, '')
-    mac = mac.upcase
 
     CSV.open(@database_path,"r") do |csv|
       csv.each do |row|
-        if row[0] == mac
+        if row[0] == mac.upcase
           return row[1]
         end
       end
