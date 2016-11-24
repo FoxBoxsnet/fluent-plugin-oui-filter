@@ -16,14 +16,14 @@ module Fluent::Plugin
         @key_prefix    = @mac_address + "_" + @key_prefix
     end
 
-    def filter(tag, time, es)
+    def filter_stream(tag, es)
       new_es = MultiEventStream.new
       tag = tag.sub(@remove_prefix, '') if @remove_prefix
       tag = (@add_prefix + '.' + tag) if @add_prefix
 
-        es.each do |record|
+        es.each do |time, record|
           record[@key_prefix] = getprotocolname(record[@mac_address])
-          new_es.add(record)
+          new_es.add(time, record)
         end
         return new_es
     end
