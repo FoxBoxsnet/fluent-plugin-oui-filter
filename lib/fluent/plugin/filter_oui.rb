@@ -1,3 +1,4 @@
+require 'lib/fluent/event.rb'
 require 'csv'
 
 module Fluent::Plugin
@@ -17,7 +18,7 @@ module Fluent::Plugin
     end
 
     def filter_stream(tag, es)
-      new_es = MultiEventStream.new
+      new_es = Fluent::MultiEventStream.new
       tag = tag.sub(@remove_prefix, '') if @remove_prefix
       tag = (@add_prefix + '.' + tag) if @add_prefix
 
