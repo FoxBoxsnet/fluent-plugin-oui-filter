@@ -16,7 +16,7 @@ module Fluent::Plugin
         @key_prefix    = @mac_address + "_" + @key_prefix
     end
 
-    def filter(tag, time , es)
+    def filter(tag, time, es)
       new_es = MultiEventStream.new
       tag = tag.sub(@remove_prefix, '') if @remove_prefix
       tag = (@add_prefix + '.' + tag) if @add_prefix
