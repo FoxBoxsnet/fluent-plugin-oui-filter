@@ -29,8 +29,8 @@ module Fluent::Plugin
     end
 
     def getprotocolname(mac)
-      a = mac.gsub!(/[0-9a-fA-F:]{1,8}$/, '')
-      b = mac.gsub!(/:/, '')
+      a = mac.gsub(/[0-9a-fA-F:]{1,8}$/, '')
+      b = mac.gsub(/:/, '')
       c = b.upcase
 
       CSV.open(@database_path,"r") do |csv|
