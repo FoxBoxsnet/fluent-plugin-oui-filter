@@ -1,4 +1,3 @@
-require 'event.rb'
 require 'csv'
 
 module Fluent::Plugin
