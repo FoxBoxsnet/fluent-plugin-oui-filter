@@ -22,7 +22,7 @@ module Fluent::Plugin
       tag = (@add_prefix + '.' + tag) if @add_prefix
 
         es.each do |time, record|
-          record[@key_prefix] = getprotocolname(record[@mac_address])
+          record[@key_prefix] = getprotocolname(record[@mac_address]) rescue nil
           new_es.add(time, record)
         end
         return new_es
