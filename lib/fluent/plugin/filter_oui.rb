@@ -22,13 +22,14 @@ module Fluent::Plugin
       tag = (@add_prefix + '.' + tag) if @add_prefix
 
         es.each do |time, record|
-          record[@key_prefix] = getprotocolname(record[@mac_address]) rescue nil
+          record[@key_prefix] = getouiname(record[@mac_address])
+        rescue nil
           new_es.add(time, record)
         end
         return new_es
     end
 
-    def getprotocolname(macaddress)
+    def getouiname(macaddress)
       macaddress = macaddress.gsub(/[0-9a-fA-F:]{1,8}$/, '')
       macaddress = macaddress.gsub(/:/, '')
       macaddress = macaddress.upcase
