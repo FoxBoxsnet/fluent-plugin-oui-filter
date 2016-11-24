@@ -24,8 +24,8 @@ module Fluent::Plugin
         es.each do |time, record|
           unless record[@mac_address].nil?
             record[@key_prefix] = getouiname(record[@mac_address]) rescue nil
-            new_es.add(time, record)
           end
+            new_es.add(time, record)
         end
         return new_es
     end
