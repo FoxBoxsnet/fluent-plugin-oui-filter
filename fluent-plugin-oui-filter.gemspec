@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-oui-filter"
   spec.version       = "0.0.1"
   spec.authors       = ["Tokyo Home SOC"]
-  spec.email         = ["n.aoyama@homesoc.tokyo"]
+  spec.email         = ["github@homesoc.tokyo"]
 
   spec.summary       = %q{Return vendor ID from MAC address.}
   spec.description   = %q{Return vendor ID from MAC address.}
