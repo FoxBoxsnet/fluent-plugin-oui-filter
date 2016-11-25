@@ -22,7 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+<filter oui.**>
+  type oui
+  mac_address mac_address
+  key_prefix vendor
+</filter>
+```
++ `database_path` : OUI Database path
++ `mac_address` : MAC Address field
++ `key_prefix` : add `mac_address` + `key_prefix` out field
 
 ## Development
 

@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-oui-filter"
   spec.version       = "0.0.1"
-  spec.authors       = ["tokyohomesoc"]
+  spec.authors       = ["Tokyo Home SOC"]
   spec.email         = ["n.aoyama@homesoc.tokyo"]
 
   spec.summary       = %q{Return vendor ID from MAC address.}
