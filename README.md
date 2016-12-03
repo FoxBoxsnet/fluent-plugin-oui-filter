@@ -26,12 +26,14 @@ Or install it yourself as:
 <filter oui.**>
   type oui
   mac_address mac_address
-  key_prefix vendor
+  key_prefix_vendor vendor
+  key_prefix_oui oui
 </filter>
 ```
 + `database_path` : OUI Database path
 + `mac_address` : MAC Address field
-+ `key_prefix` : add `mac_address` + `key_prefix` out field
++ `key_prefix_vendor` : OUI vendor name
++ `key_prefix_oui` : MAC address oui id
 
 ## Development
 
