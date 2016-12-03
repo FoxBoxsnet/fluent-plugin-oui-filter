@@ -44,7 +44,7 @@ module Fluent::Plugin
     def getouiname(ouiaddress)
       CSV.open(@database_path,"r") do |csv|
         csv.each do |row|
-          if row[0] == macaddress
+          if row[0] == ouiaddress
             return row[1]
           end
         end
