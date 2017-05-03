@@ -16,6 +16,8 @@ module Fluent::Plugin
         @remove_prefix = Regexp.new("^#{Regexp.escape(remove_prefix)}\.?") unless conf['remove_prefix'].nil?
         @key_prefix_vendor    = @mac_address + "_" + @key_prefix_vendor
         @key_prefix_oui       = @mac_address + "_" + @key_prefix_oui
+
+        @database             = CSV.read(@database_path, headers: false)
     end
 
     def filter_stream(tag, es)
@@ -42,13 +44,18 @@ module Fluent::Plugin
     end
 
     def getouiname(ouiaddress)
-      CSV.open(@database_path,"r") do |csv|
-        csv.each do |row|
-          if row[0] == ouiaddress
-            return row[1]
-          end
+      @database.each do |row|
+        if row[0] == ouiaddress
+          @oui_name = row[1]
         end
       end
+
+      if @oui_name then
+        return @oui_name
+      else
+        return 'unknown'
+      end
+
     end
   end
 end
