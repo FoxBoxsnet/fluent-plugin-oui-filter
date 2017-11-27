@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-filter-oui"
-  spec.version       = "0.0.6"
-  spec.authors       = ["Tokyo Home SOC"]
-  spec.email         = ["github@homesoc.tokyo"]
+  spec.version       = "0.0.7"
+  spec.authors       = ["HomeSOC"]
+  spec.email         = ["github@homesoc.io"]
 
   spec.summary       = %q{Return vendor ID from MAC address.}
   spec.description   = %q{Return vendor ID from MAC address.}
-  spec.homepage      = "https://github.com/tokyohomesoc/fluent-plugin-filter-oui"
-  spec.license       = "MIT"
+  spec.homepage      = "https://github.com/homesoc/fluent-plugin-filter-oui"
+  spec.license           = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
